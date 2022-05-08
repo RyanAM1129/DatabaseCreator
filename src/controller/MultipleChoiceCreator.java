@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MultipleChoiceCreator {
+public class MultipleChoiceCreator implements Creator{
     SQLiteDataSource myDataSource;
     Connection myConnection;
     Statement myStatement;
@@ -23,12 +23,27 @@ public class MultipleChoiceCreator {
         }
     }
 
-    public void createTable(final String theName) {
-        final String myQuery = "CREATE TABLE IF NOT EXISTS " + theName + " ( " +
-                "QUESTION TEXT NOT NULL, CORRECT TEXT NOT NULL," +
+    public void createTable() {
+        final String myQuery = "CREATE TABLE IF NOT EXISTS multiple_choice" +
+                "( QUESTION TEXT NOT NULL, CORRECT TEXT NOT NULL," +
                 "WRONG1 TEXT NOT NULL, WRONG2 TEXT NOT NULL," +
                 "WRONG3 TEXT NOT NULL )";
 
+        try {
+            myStatement.executeUpdate(myQuery);
+        } catch (SQLException theException) {
+            theException.printStackTrace();
+            System.exit(0);
+        }
+    }
+
+    public void addRow(final String theQuestion, final String theCorrect,
+                       final String theWrong1, final String theWrong2,
+                       final String theWrong3) {
+        final String myQuery = "INSERT INTO multiple_choice ( QUESTION, " +
+                "CORRECT, WRONG1, WRONG2, WRONG3 ) VALUES ( '" + theQuestion +
+                "', '" + theCorrect + "', '" + theWrong1 + "', '" +
+                theWrong2 + "', '" + theWrong3 + "' )";
         try {
             myStatement.executeUpdate(myQuery);
         } catch (SQLException theException) {
