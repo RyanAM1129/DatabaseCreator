@@ -11,6 +11,10 @@ public class MultipleChoiceCreator implements Creator{
     Connection myConnection;
     Statement myStatement;
 
+    public MultipleChoiceCreator(final String theURL) {
+        establishConnection(theURL);
+    }
+
     public void establishConnection(final String theURL) {
         try {
             myDataSource = new SQLiteDataSource();

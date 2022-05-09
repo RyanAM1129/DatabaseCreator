@@ -11,6 +11,10 @@ public class ShortAnswerCreator implements Creator{
     Connection myConnection;
     Statement myStatement;
 
+    public ShortAnswerCreator(final String theURL) {
+        establishConnection(theURL);
+    }
+
     public void establishConnection(final String theURL) {
         try {
             myDataSource = new SQLiteDataSource();
