@@ -11,8 +11,9 @@ public class ShortAnswerCreator implements Creator{
     Connection myConnection;
     Statement myStatement;
 
-    public ShortAnswerCreator(final String theURL) {
-        establishConnection(theURL);
+    public ShortAnswerCreator() {
+        establishConnection("jdbc:sqlite:questions.db");
+        createTable();
     }
 
     public void establishConnection(final String theURL) {
