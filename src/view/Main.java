@@ -25,15 +25,15 @@ public class Main {
                         switch (myChoice) {
                             case 1:
                                 System.out.println("Enter Question Text: ");
-                                String myQuestion = keyboard.nextLine();
+                                String myQuestion = keyboard.nextLine().strip();
                                 System.out.println("Enter Answer Text: ");
-                                String myAnswer = keyboard.nextLine();
+                                String myAnswer = keyboard.nextLine().strip();
                                 System.out.println("Enter Wrong1 Text: ");
-                                String myWrong1 = keyboard.nextLine();
+                                String myWrong1 = keyboard.nextLine().strip();
                                 System.out.println("Enter Wrong2 Text: ");
-                                String myWrong2 = keyboard.nextLine();
+                                String myWrong2 = keyboard.nextLine().strip();
                                 System.out.println("Enter Wrong3 Text: ");
-                                String myWrong3 = keyboard.nextLine();
+                                String myWrong3 = keyboard.nextLine().strip();
                                 myMPCreator.addRow(myQuestion, myAnswer,
                                         myWrong1, myWrong2, myWrong3);
                                 break;
@@ -51,9 +51,9 @@ public class Main {
                         switch (myChoice) {
                             case 1:
                                 System.out.println("Enter Question Text: ");
-                                String myQuestion = keyboard.nextLine();
+                                String myQuestion = keyboard.nextLine().strip();
                                 System.out.println("Enter Answer Text: ");
-                                String myAnswer = keyboard.nextLine();
+                                String myAnswer = keyboard.nextLine().strip();
                                 mySACreator.addRow(myQuestion, myAnswer);
                                 break;
                             case 2:
