@@ -2,6 +2,7 @@ package view;
 
 import controller.MultipleChoiceCreator;
 import controller.ShortAnswerCreator;
+import controller.TrueFalseCreator;
 
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
         while (keepGoing) {
             Boolean myAddRow = true;
-            System.out.println("1. Multiple Choice\n2. Short Answer\n3. Exit");
+            System.out.println("1. Multiple Choice\n2. Short Answer\n3. True False\n4. Exit");
             myChoice = Integer.parseInt(keyboard.nextLine());
             switch(myChoice) {
                 case 1:
@@ -62,6 +63,25 @@ public class Main {
                     } while (myAddRow);
                     break;
                 case 3:
+                    TrueFalseCreator myTFCreator = new TrueFalseCreator();
+                    do {
+                        System.out.println("Would you like to add a row?");
+                        System.out.println("1.Yes\n2.No");
+                        myChoice = Integer.parseInt(keyboard.nextLine());
+                        switch (myChoice) {
+                            case 1:
+                                System.out.println("Enter Question Text: ");
+                                String myQuestion = keyboard.nextLine().strip();
+                                System.out.println("Enter Answer Text: ");
+                                String myAnswer = keyboard.nextLine().strip();
+                                myTFCreator.addRow(myQuestion, myAnswer);
+                                break;
+                            case 2:
+                                myAddRow = false;
+                        }
+                    } while (myAddRow);
+                    break;
+                case 4:
                     keepGoing = false;
             }
         }
